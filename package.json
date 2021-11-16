@@ -1,0 +1,18 @@
+{
+  "name": "gpus-spezra",
+  "version": "0.0.1",
+  "author": "Michael Bauer <bauermi86944@th-nuernberg.de>",
+  "license": "WTFPL",
+  "private": true,
+  "scripts": {
+    "build": "rimraf dist && npm run -s og-image && npm run -s deck",
+    "deck": "marp --no-stdin pres.md -o dist/index.html && cpy \"assets/**/*\" dist/assets",
+    "now-build": "npm run -s deck",
+    "start": "marp -ps ."
+  },
+  "devDependencies": {
+    "@marp-team/marp-cli": "^1.4.2",
+    "cpy-cli": "^3.1.1",
+    "rimraf": "^3.0.2"
+  }
+}
