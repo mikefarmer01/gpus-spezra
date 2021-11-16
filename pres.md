@@ -11,6 +11,27 @@ _footer: Michael Bauer
 ###### Spezielle Rechnerarchitekturen - WS' 21/22
 
 ---
+<!-- _header: "
+__Graphic Processing Units__
+"-->
+
+## Agenda
+
+1. Aktuelles Marktgeschehen
+2. Allgemeine Funktionsweise
+3. Geschichte
+4. Architektur
+5. Einsatzbereiche
+6. Ausblick: Raytracing
+
+---
+<!-- _header: "
+__Graphic Processing Units__
+"-->
+
+![bg auto](res/prices.png)
+
+---
 
 ## Aktuelles Marktgeschehen
 <!-- footer: Spezielle Rechnerarchitekturen - GPUs -->
@@ -32,10 +53,10 @@ _footer: Michael Bauer
 
 ### Grundlagen
 
-* Eingabe: Bild, Video, 2D, 3D
-* Verarbeitung: 
+* __E__ ingabe: Bild, Video, 2D, 3D
+* __V__ erarbeitung: 
   Geometrie, Textur, Belichtung
-* Ausgabe: Bildschirm
+* __A__ usgabe: Bildschirm
   z.B. Full HD mit 8-bit Farbe
   
 
@@ -79,11 +100,9 @@ SIMD: Single-Instruction-Multiple-Data
 
 ## Geschichte
 
-<br>  
 MDA ➢ CGA ➢ VGA ➢ GPU  
-<br><br>
+
 Text 🡢 2D 🡢 3D 🡢 GP
-<br>
 4K 🡢 24G
 
 ---
@@ -313,17 +332,6 @@ Fixed-function Pipeline 🡢 programmierbare Shader
 
 ## Geschichte
 
-<br>  
-MDA ➢ CGA ➢ VGA ➢ GPU  
-<br><br>
-Text 🡢 2D 🡢 3D 🡢 GP
-<br>
-4K 🡢 24G
-
----
-
-## Geschichte
-
 * Leistung
 * Erschwinglichkeit
 * Funktionalität
@@ -333,7 +341,104 @@ Text 🡢 2D 🡢 3D 🡢 GP
 
 ---
 
+## Geschichte
+
+<br>  
+MDA ➢ CGA ➢ VGA ➢ GPU  
+<br><br>
+Text 🡢 2D 🡢 3D 🡢 GP
+<br>
+4K 🡢 24G
+
+---
+
 ## Architektur
+###### Am Beispiel von AMD RDNA 2
+
+---
+<!-- _header: "
+Architektur
+"-->
+
+![bg fit](res/rdna.png)
+
+---
+
+### Anweisungen in RDNA 2 - sALU
+<!-- _header: "" -->
+
+<style scoped>
+td, th {
+    font-size: 70%;
+    text-align: right;
+}
+</style>
+
+<div>
+<table><tr>
+<th> KATEGORIE </th>
+<th> BEISPIEL </th>
+<th> ERKLÄRUNG </th>
+</tr><tr>
+<th> Bedingungsanw. </th>
+<td> S_CSELECT_B64 </td>
+<td> <pre>D = SCC ? S0 : S1 </td>
+</tr><tr>
+<th> Ganzzahl-Arithmetik </th>
+<td> S_ADD_U32 </td>
+<td> <pre>D = S0 + S1, SCC = carry out </td>
+</tr><tr>
+<th> Vergleiche</th>
+<td> S_CMP_EQ_U64 </td>
+<td> <pre>SCC = S0 == S1 </td>
+</tr><tr>
+<th> Bitweise Anw.</th>
+<td> S_AND_B64 </td>
+<td> <pre>D = S0 & S1 </td>
+</tr><tr>
+<th> Zugriffsanw.</th>
+<td> S_GETREG_B32 </td>
+<td> Ein Hardwareregister in die LSBs von D laden </td>
+</tr>
+</table>
+</div>
+
+---
+
+### Anweisungen in RDNA 2 - vALU
+<!-- _header: "" -->
+
+<style scoped>
+td, th {
+    font-size: 70%;
+    text-align: right;
+}
+</style>
+
+<div>
+<table><tr>
+<th> BEISPIEL </th>
+<th> ERKLÄRUNG </th>
+</tr><tr>
+<td> V_DOT2C_F32_F16 </td>
+<td> <pre>D.f32 =
+S0.f16[0] * S1.f16[0] +
+S0.f16[1] * S1.f16[1] + D.f32 </pre> </td>
+</tr><tr>
+<td> V_EXP_F32 </td>
+<td> <pre>D.f = pow(2.0, S0.f) </td>
+</tr><tr>
+<td> V_LOG_F32 </td>
+<td> <pre>D.f = log2(S0.f) </td>
+</tr><tr>
+<td> V_SQRT_F64 </td>
+<td> <pre>D.d = sqrt(S0.d) </td>
+</tr><tr>
+<td> V_SIN_F16 </td>
+<td> <pre>D.f16 = sin(S0.f16 * 2 * PI) </td>
+</tr>
+</table>
+</div>
 
 ---
 
