@@ -5,7 +5,7 @@
   "license": "WTFPL",
   "private": true,
   "scripts": {
-    "build": "rimraf dist && npm run -s og-image && npm run -s deck",
+    "build": "rimraf dist && npm run -s deck",
     "deck": "marp --html --no-stdin pres.md -o dist/index.html && cpy \"res/**/*\" dist/res",
     "now-build": "npm run -s deck",
     "start": "marp -ps ."
