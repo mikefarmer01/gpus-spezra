@@ -336,7 +336,7 @@ Fixed-function Pipeline 🡢 programmierbare Shader
 * Unterstützung moderner Interfaces (neuerer PCI-Versionen)
 
 ---
-<!-- _header: ""-->
+<!-- _header: __GPUs - im Laufe der Zeit__ -->
 
 * Ausweitung der API-Unterstützung  
   (Direct3D, OpenGL, OpenCL, Vulkan, CUDA)
@@ -555,6 +555,24 @@ th { text-align: right}
 
 ---
 <!-- _header: "" -->
+
+<video src="res/raytracing.webm" autoplay autobuffer controls height=400> </video>
+
+---
+<!-- _header: "
+__Photorealismus mit Raytracing__\n
+l.: Ray-Tracing-Verfahren [B28]\n
+r.: Ray Tracing mit NVIDIA Turing und RT Cores [B29]
+"-->
+
+![w:430](res/rt_wikipedia.png) ![w:690](res/fig20.png)
+
+---
+
+Vielen Dank für Ihre Zeit!
+
+---
+<!-- _header: "" -->
 ### Quellen
 
 <style scoped>
@@ -664,3 +682,5 @@ p {
 [B25] https://images.anandtech.com/reviews/video/ati/R300/fppu.gif
 [B26] https://docs.microsoft.com/en-us/windows/win32/direct3d10/images/d3d10-pipeline-stages.png
 [B27] AMD: „RDNA 2“ Instruction Set Architecture - Reference Guide (2020), S. 4
+[B28] https://upload.wikimedia.org/wikipedia/commons/9/95/Ray_Tracing_Illustration_First_Bounce.png
+[B29] NVIDIA: NVIDIA Turing GPU Architecture, Fig. 20
